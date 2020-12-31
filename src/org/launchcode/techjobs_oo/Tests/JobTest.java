@@ -2,7 +2,6 @@ package org.launchcode.techjobs_oo.Tests;
 
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
-
 import static org.junit.Assert.*;
 
 public class JobTest {
@@ -10,22 +9,10 @@ public class JobTest {
     //TODO: Create two Job objects using the empty constructor.
     // Instead of creating the Job objects inside the test method, you could declare and initialize them using @Before.
 
-    // using @Before did not work with the auto incrementing ID. Job objects put inside the tests
-//    Job test_job1;
-//    Job test_job2;
-//    Job test_job3;
-//    Job test_job4;
-
-//    @Before
-//    public void createJobObjects() {
-//        test_job1 = new Job();
-//        test_job2 = new Job();
-//        test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//        test_job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//    }
 
     //TODO: define a test called testSettingJobId.
     // Use assertEquals, assertTrue, or assertFalse to test that the ID values for the two objects are NOT the same and differ by 1.
+
     @Test
     public void testSettingJobId() {
         Job test_job1 = new Job();
@@ -37,21 +24,52 @@ public class JobTest {
     // The instanceof keyword can be used to check the class of an object. The result of the comparison is a boolean.
     @Test
     public void testJobConstructorSetsAllFields() {
-        Job test_job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertTrue("Check for job name", (test_job3.getName() == "Product tester"));
-        assertTrue("Check for Employer", (test_job3.getEmployer().getValue() == "ACME"));
-        assertTrue("Check for Location", (test_job3.getLocation().getValue() == "Desert"));
-        assertTrue("Check for Position Type", (test_job3.getPositionType().getValue() == "Quality control"));
-        assertTrue("Check for Core Competency", (test_job3.getCoreCompetency().getValue() == "Persistence"));
-        assertEquals(3, test_job3.getId());
+        Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue("Check for job name", (test_job1.getName() == "Product tester"));
+        assertTrue("Check for Employer", (test_job1.getEmployer().getValue() == "ACME"));
+        assertTrue("Check for Location", (test_job1.getLocation().getValue() == "Desert"));
+        assertTrue("Check for Position Type", (test_job1.getPositionType().getValue() == "Quality control"));
+        assertTrue("Check for Core Competency", (test_job1.getCoreCompetency().getValue() == "Persistence"));
+        assertTrue("Check for id", test_job1.getId() > 0);
+        // TODO: Need to test the types for the object properties. instanceof does not seem to work.
     }
 
     //TODO: Generate two Job objects that have identical field values EXCEPT for id. Test that equals returns false.
     @Test
     public void testJobsForEquality() {
-        Job test_job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Job test_job5 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertFalse(test_job4 == test_job5);
+        Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job test_job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertFalse(test_job1 == test_job2);
     }
+
+    //TODO: Use TDD to Build The toString Method
+    // When passed a Job object, it should return a string that contains a blank line before and after the job information.
+    // The string should contain a label for each field, followed by the data stored in that field. Each field should be on its own line.
+    // If a field is empty, the method should add, “Data not available” after the label.
+    // (Bonus) If a Job object ONLY contains data for the id field, the method should return, “OOPS! This job does not seem to exist.”
+    @Test
+    public void toStringHasBlanks() {
+        Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(test_job1.toString().contains(" "));
+    }
+    @Test
+    public void toStringHasLabels() {
+        Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(test_job1.toString().contains("ID"));
+    }
+    @Test
+    public void toStringHasLabelsDataAndNewLine() {
+        Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertTrue(test_job1.toString().contains("ID"));
+        assertTrue(test_job1.toString().contains("ACME"));
+        assertTrue(test_job1.toString().contains("\n "));
+    }
+    @Test
+    public void toStringHasEmptyFieldDataWarning() {
+        Job test_job1 = new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        System.out.println(test_job1.toString());
+        assertTrue(test_job1.toString().contains("Employer: Data not available"));
+    }
+
 
 }

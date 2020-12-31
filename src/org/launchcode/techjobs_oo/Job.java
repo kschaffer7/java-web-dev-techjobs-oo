@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Job {
 
-    private int id;
+    public int id;
     private static int nextId = 1;
 
     private String name;
@@ -69,7 +69,6 @@ public class Job {
     public Employer getEmployer() {
         return employer;
     }
-
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
@@ -96,5 +95,49 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+    @Override
+    public String toString(){
+        // TODO: WASH RINSE REPAT FOR EACH FIELD
+        String name;
+        String employer;
+        String location;
+        String positionType;
+        String coreCompetency;
+        if(!this.name.isEmpty() && this.name != null){
+            name = this.name;
+        } else {
+            name = "Data not available";
+        }
+        if(!this.employer.getValue().isEmpty() && this.employer.getValue() != null){
+            employer = this.employer.getValue();
+        } else {
+            employer = "Data not available";
+        }
+        if(this.location.getValue() != ""){
+            location = this.location.getValue();
+        } else {
+            location = "Data not available";
+        }
+        if(this.positionType.getValue() != ""){
+            positionType = this.positionType.getValue();
+        } else {
+            positionType = "Data not available";
+        }
+        if(this.coreCompetency.getValue() != ""){
+            coreCompetency = this.coreCompetency.getValue();
+        } else {
+            coreCompetency = "Data not available";
+        }
+
+        String job =
+                "\n " + "ID:" + " " + this.getId() +
+                "\n " + "Name:" + " " + name +
+                "\n " + "Employer:" + " " + employer +
+                "\n " + "Location:" + " " + location +
+                "\n " + "Position Type:" + " " + positionType +
+                "\n " + "Core Competency:" + " " + coreCompetency + "\n";
+
+        return job;
     }
 }
