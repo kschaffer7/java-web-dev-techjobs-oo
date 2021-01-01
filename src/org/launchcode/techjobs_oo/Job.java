@@ -98,18 +98,18 @@ public class Job {
     }
     @Override
     public String toString(){
-        // TODO: WASH RINSE REPAT FOR EACH FIELD
+
         String name;
         String employer;
         String location;
         String positionType;
         String coreCompetency;
-        if(this.name != "" && this.name != null){
+        if(!this.name.isEmpty() && this.name != null){
             name = this.name;
         } else {
             name = "Data not available";
         }
-        if(this.employer.getValue() != "" && this.employer.getValue() != null){
+        if(!this.employer.getValue().isEmpty() && this.location.getValue() != null){
             employer = this.employer.getValue();
         } else {
             employer = "Data not available";
@@ -119,12 +119,12 @@ public class Job {
         } else {
             location = "Data not available";
         }
-        if(this.positionType.getValue() != "" && this.positionType.getValue() != null){
+        if(!this.positionType.getValue().isEmpty() && this.positionType.getValue() != null){
             positionType = this.positionType.getValue();
         } else {
             positionType = "Data not available";
         }
-        if(this.coreCompetency.getValue() != "" && this.coreCompetency.getValue() != null){
+        if(!this.coreCompetency.getValue().isEmpty() && this.coreCompetency.getValue() != null){
             coreCompetency = this.coreCompetency.getValue();
         } else {
             coreCompetency = "Data not available";

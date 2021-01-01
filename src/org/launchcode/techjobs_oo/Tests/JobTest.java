@@ -17,7 +17,7 @@ public class JobTest {
     public void testSettingJobId() {
         Job test_job1 = new Job();
         Job test_job2 = new Job();
-        assertTrue("Not the same, differs by 1", (test_job2.getId() - test_job1.getId()) == 1);
+        assertEquals("Not the same, differs by 1", 1, (test_job2.getId() - test_job1.getId()));
     }
 
     //TODO: Use assert statements to test that the constructor correctly assigns the class and value of each field.
@@ -25,11 +25,11 @@ public class JobTest {
     @Test
     public void testJobConstructorSetsAllFields() {
         Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertTrue("Check for job name", (test_job1.getName() == "Product tester"));
-        assertTrue("Check for Employer", (test_job1.getEmployer().getValue() == "ACME"));
-        assertTrue("Check for Location", (test_job1.getLocation().getValue() == "Desert"));
-        assertTrue("Check for Position Type", (test_job1.getPositionType().getValue() == "Quality control"));
-        assertTrue("Check for Core Competency", (test_job1.getCoreCompetency().getValue() == "Persistence"));
+        assertEquals("Check for job name", "Product tester", test_job1.getName());
+        assertEquals("Check for Employer", "ACME", test_job1.getEmployer().getValue());
+        assertEquals("Check for Location", "Desert", test_job1.getLocation().getValue());
+        assertEquals("Check for Position Type", "Quality control", test_job1.getPositionType().getValue());
+        assertEquals("Check for Core Competency", "Persistence", test_job1.getCoreCompetency().getValue());
         assertTrue("Check for id", test_job1.getId() > 0);
         // TODO: Need to test the types for the object properties. instanceof does not seem to work.
     }
@@ -39,7 +39,7 @@ public class JobTest {
     public void testJobsForEquality() {
         Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job test_job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertFalse(test_job1 == test_job2);
+        assertFalse(test_job1.equals(test_job2));
     }
 
     //TODO: Use TDD to Build The toString Method
@@ -66,9 +66,9 @@ public class JobTest {
     }
     @Test
     public void toStringHasEmptyFieldDataWarning() {
-        Job test_job1 = new Job("Product tester", new Employer("Potato Company"), new Location(""), new PositionType(), new CoreCompetency());
+        Job test_job1 = new Job("Product tester", new Employer("Potato Company"), new Location(""), new PositionType(""), new CoreCompetency(""));
 //        System.out.println(test_job1.toString());
-        assertTrue(test_job1.toString().contains("Data not available"));
+        assertTrue("Testing for unavailable data", test_job1.toString().contains("Data not available"));
     }
 
 
