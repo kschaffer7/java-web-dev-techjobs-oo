@@ -66,9 +66,9 @@ public class JobTest {
     }
     @Test
     public void toStringHasEmptyFieldDataWarning() {
-        Job test_job1 = new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        System.out.println(test_job1.toString());
-        assertTrue(test_job1.toString().contains("Employer: Data not available"));
+        Job test_job1 = new Job("Product tester", new Employer("Potato Company"), new Location(""), new PositionType(), new CoreCompetency());
+//        System.out.println(test_job1.toString());
+        assertTrue(test_job1.toString().contains("Data not available"));
     }
 
 

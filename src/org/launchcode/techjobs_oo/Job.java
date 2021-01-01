@@ -104,27 +104,27 @@ public class Job {
         String location;
         String positionType;
         String coreCompetency;
-        if(!this.name.isEmpty() && this.name != null){
+        if(this.name != "" && this.name != null){
             name = this.name;
         } else {
             name = "Data not available";
         }
-        if(!this.employer.getValue().isEmpty() && this.employer.getValue() != null){
+        if(this.employer.getValue() != "" && this.employer.getValue() != null){
             employer = this.employer.getValue();
         } else {
             employer = "Data not available";
         }
-        if(this.location.getValue() != ""){
+        if(!this.location.getValue().isEmpty() && this.location.getValue() != null){
             location = this.location.getValue();
         } else {
             location = "Data not available";
         }
-        if(this.positionType.getValue() != ""){
+        if(this.positionType.getValue() != "" && this.positionType.getValue() != null){
             positionType = this.positionType.getValue();
         } else {
             positionType = "Data not available";
         }
-        if(this.coreCompetency.getValue() != ""){
+        if(this.coreCompetency.getValue() != "" && this.coreCompetency.getValue() != null){
             coreCompetency = this.coreCompetency.getValue();
         } else {
             coreCompetency = "Data not available";
