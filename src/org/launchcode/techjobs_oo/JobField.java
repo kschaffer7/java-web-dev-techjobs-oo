@@ -34,7 +34,7 @@ public abstract class JobField {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(getId());
     }
 
     // Getters and Setters:

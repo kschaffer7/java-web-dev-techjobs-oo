@@ -104,7 +104,9 @@ public class Job {
         String location;
         String positionType;
         String coreCompetency;
-        if(!this.name.isEmpty() && this.name != null){
+
+        // Validation for name, employer, location, Position type, and Core Competency Fields
+        if(!this.name.isEmpty()){
             name = this.name;
         } else {
             name = "Data not available";
@@ -130,14 +132,12 @@ public class Job {
             coreCompetency = "Data not available";
         }
 
-        String job =
-                "\n " + "ID:" + " " + this.getId() +
+        // Formatting for output
+        return "\n " + "ID:" + " " + this.getId() +
                 "\n " + "Name:" + " " + name +
                 "\n " + "Employer:" + " " + employer +
                 "\n " + "Location:" + " " + location +
                 "\n " + "Position Type:" + " " + positionType +
                 "\n " + "Core Competency:" + " " + coreCompetency + "\n";
-
-        return job;
     }
 }

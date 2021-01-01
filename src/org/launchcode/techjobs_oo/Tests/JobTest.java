@@ -70,6 +70,4 @@ public class JobTest {
 //        System.out.println(test_job1.toString());
         assertTrue("Testing for unavailable data", test_job1.toString().contains("Data not available"));
     }
-
-
 }
