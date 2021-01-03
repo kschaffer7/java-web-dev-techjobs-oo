@@ -50,9 +50,7 @@ public class Job {
     }
 
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
-
+    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID and id.
 
     public int getId() {
         return id;
@@ -96,6 +94,7 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
     @Override
     public String toString(){
 

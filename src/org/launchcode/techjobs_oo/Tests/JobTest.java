@@ -6,13 +6,9 @@ import static org.junit.Assert.*;
 
 public class JobTest {
 
-    //TODO: Create two Job objects using the empty constructor.
-    // Instead of creating the Job objects inside the test method, you could declare and initialize them using @Before.
-
-
-    //TODO: define a test called testSettingJobId.
+    //TODO: Define a test called testSettingJobId.
+    // Create two Job objects using the empty constructor.
     // Use assertEquals, assertTrue, or assertFalse to test that the ID values for the two objects are NOT the same and differ by 1.
-
     @Test
     public void testSettingJobId() {
         Job test_job1 = new Job();
@@ -31,7 +27,6 @@ public class JobTest {
         assertEquals("Check for Position Type", "Quality control", test_job1.getPositionType().getValue());
         assertEquals("Check for Core Competency", "Persistence", test_job1.getCoreCompetency().getValue());
         assertTrue("Check for id", test_job1.getId() > 0);
-        // TODO: Need to test the types for the object properties. instanceof does not seem to work.
     }
 
     //TODO: Generate two Job objects that have identical field values EXCEPT for id. Test that equals returns false.
@@ -44,19 +39,20 @@ public class JobTest {
 
     //TODO: Use TDD to Build The toString Method
     // When passed a Job object, it should return a string that contains a blank line before and after the job information.
-    // The string should contain a label for each field, followed by the data stored in that field. Each field should be on its own line.
-    // If a field is empty, the method should add, “Data not available” after the label.
-    // (Bonus) If a Job object ONLY contains data for the id field, the method should return, “OOPS! This job does not seem to exist.”
     @Test
     public void toStringHasBlanks() {
         Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(test_job1.toString().contains(" "));
     }
+
+    // TODO: The string should contain a label for each field
     @Test
     public void toStringHasLabels() {
         Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(test_job1.toString().contains("ID"));
     }
+
+    // TODO: THe string should contain the data stored in each field. Each field should be on its own line.
     @Test
     public void toStringHasLabelsDataAndNewLine() {
         Job test_job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
@@ -64,10 +60,14 @@ public class JobTest {
         assertTrue(test_job1.toString().contains("ACME"));
         assertTrue(test_job1.toString().contains("\n "));
     }
+
+    // TODO: If a field is empty, the method should add, “Data not available” after the label.
     @Test
     public void toStringHasEmptyFieldDataWarning() {
         Job test_job1 = new Job("Product tester", new Employer("Potato Company"), new Location(""), new PositionType(""), new CoreCompetency(""));
 //        System.out.println(test_job1.toString());
         assertTrue("Testing for unavailable data", test_job1.toString().contains("Data not available"));
     }
+
+    //TODO: (Bonus) If a Job object ONLY contains data for the id field, the method should return, “OOPS! This job does not seem to exist.”
 }
